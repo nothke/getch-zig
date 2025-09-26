@@ -1,0 +1,11 @@
+.{
+    .name = .getch,
+    .version = "0.0.1",
+    .minimum_zig_version = "0.15.1",
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+    .fingerprint = 0xbf894af3e7af7f53,
+}
