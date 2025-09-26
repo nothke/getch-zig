@@ -4,7 +4,7 @@ const builtin = @import("builtin");
 // Get a keypress. This works for Linux.
 // Source: https://viewsourcecode.org/snaptoken/kilo/02.enteringRawMode.html
 // TODO: simple Zig package for getch (at least for Linux and Windows)
-fn getch_linux() !u8 {
+fn getchLinux() !u8 {
     var stdin_buffer = std.mem.zeroes([1024]u8);
     var stdin_reader = std.fs.File.stdin().reader(&stdin_buffer);
     const stdin = &stdin_reader.interface;
@@ -33,7 +33,7 @@ fn getch_linux() !u8 {
 }
 
 // Get a keypress. This works for Windows.
-fn getch_win() !u8 {
+fn getchWin() !u8 {
     const c = @cImport({
         @cInclude("conio.h");
     });
@@ -43,4 +43,6 @@ fn getch_win() !u8 {
 }
 
 pub const getch = if (builtin.os.tag == .windows)
-{} else getch_linux;
+    getchWin
+else
+    getchLinux;
