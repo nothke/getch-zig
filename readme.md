@@ -12,14 +12,11 @@ Either copy `getch.zig` and just `const getch = @import("getch.zig");` to your r
 zig fetch --save git+[URL to this repo].git
 ```
 
-To build.zig add an import to your module:
+To build.zig add an import to your module and link lib C:
 
 ```zig
-.imports = &.{
-    {
-        .name = "getch",
-        .module = b.dependency("getch", .{ .target = target }).module("getch"),
-    },
+exe.root_module.addImport("getch", b.dependency("getch", .{}).module("getch"));
+exe.linkLibC();
 ```
 
 Then in your code:
@@ -29,6 +26,7 @@ const getch = @import("getch");
 
 fn main() void {
     const char = try getch.getch();
+    std.log.info("You typed char: {c}, code: {}", .{char, char});
 }
 
 ```
