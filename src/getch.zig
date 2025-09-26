@@ -4,7 +4,7 @@ const builtin = @import("builtin");
 // Get a keypress. This works for Linux.
 // Source: https://viewsourcecode.org/snaptoken/kilo/02.enteringRawMode.html
 fn getchLinux() !u8 {
-    var stdin_buffer = std.mem.zeroes([1024]u8);
+    var stdin_buffer = std.mem.zeroes([4]u8);
     var stdin_reader = std.fs.File.stdin().reader(&stdin_buffer);
     const stdin = &stdin_reader.interface;
 
