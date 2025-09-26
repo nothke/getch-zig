@@ -6,7 +6,7 @@ This is a cross-platform implementation (for now it works on Windows and Linux).
 
 ### How to use
 
-Either copy `getch.zig` to your repo, or add this as a package:
+Either copy `getch.zig` and just `const getch = @import("getch.zig");` to your repo, or add this as a package:
 
 ```zig
 zig fetch --save git+[URL to this repo].git
