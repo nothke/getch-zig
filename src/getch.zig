@@ -3,7 +3,6 @@ const builtin = @import("builtin");
 
 // Get a keypress. This works for Linux.
 // Source: https://viewsourcecode.org/snaptoken/kilo/02.enteringRawMode.html
-// TODO: simple Zig package for getch (at least for Linux and Windows)
 fn getchLinux() !u8 {
     var stdin_buffer = std.mem.zeroes([1024]u8);
     var stdin_reader = std.fs.File.stdin().reader(&stdin_buffer);
